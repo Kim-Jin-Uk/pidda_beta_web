@@ -1,0 +1,94 @@
+.boad_wrapper{
+  width: 100%;
+  margin-top: 78px;
+  text-align: center;
+}
+
+.green_title{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 31px;
+  line-height: 34px;
+  text-align: center;
+  letter-spacing: 0.15px;
+  color: #3AD29F;
+  display: inline-block;
+}
+
+.black_title{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 31px;
+  line-height: 34px;
+  text-align: center;
+  letter-spacing: 0.15px;
+  color: #181818;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.side_title{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 16px;
+  color: #B1B1B1;
+  margin-top: 26px;
+}
+
+.boad_img{
+  width: 169px;
+  height: 192px;
+  background: url(../images/onboad/onboading.svg);
+  margin: 26px auto 21px;
+}
+
+.card{
+  margin-left: 44px;
+  margin-right: 44px;
+  width: auto;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 9px;
+  padding: 14px;
+  >div{
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 22px;
+    margin: 0 auto;
+  }
+}
+
+.first_card{
+  background: #3AD29F;
+  color: #FFFFFF;
+  cursor: pointer;
+  margin-top: 39px;
+}
+
+.second_card{
+  background: #48B2FE;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.third_card{
+  background: #00000000;
+  color: #3AD29F;
+  border: 2px solid #3AD29F;
+  cursor: pointer;
+}
+
+.etc{
+  width: 164px;
+  height: 50px;
+  margin: 14px auto 0;
+  background: url(../images/onboad/etc.svg);
+}
