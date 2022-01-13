@@ -52,26 +52,55 @@
   font-family: Noto Sans KR;
   font-style: normal;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 18px;
   line-height: 26px;
   text-align: center;
   letter-spacing: 0.15px;
   color: #181818;
   margin-top: 29px;
   height: 50px;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .check_box_group{
   margin-top: 228.5px;
   position: relative;
   transform: translateY(-50%);
-  height: 100px;
-  background: #9F33F4;
+  text-align: center;
 }
 
 .nav_group{
   position: absolute;
-  bottom: 64px;
+  top: 592px;
+  width: 40px;
   margin: 0 auto;
   display: flex;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.prev_arrow{
+  position: absolute;
+  top: 560px;
+  margin: 0 auto;
+  background: url(../images/test/prev.svg);
+  width: 24px;
+  height: 24px;
+  left: 50%;
+  transform: translateX(-54px);
+  cursor: pointer;
+}
+
+.next_arrow{
+  position: absolute;
+  top: 560px;
+  margin: 0 auto;
+  background: url(../images/test/next.svg);
+  width: 24px;
+  height: 24px;
+  left: 50%;
+  transform: translateX(30px);
+  cursor: pointer;
 }
