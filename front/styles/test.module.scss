@@ -11,7 +11,7 @@
 .back_btn{
   width: 24px;
   height: 24px;
-  margin-top: 4px;
+  margin-top: 5.5px;
   margin-left: 21px;
   background: url(../images/test/back.svg);
 }
@@ -46,6 +46,21 @@
   color: #3AD29F;
   margin-top: 30px;
   height: 16px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.alert_text{
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 25px;
+  text-align: center;
+  color: #F43333;
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .test_sub_title{
@@ -68,14 +83,15 @@
   position: relative;
   transform: translateY(-50%);
   text-align: center;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .nav_group{
   position: absolute;
   top: 592px;
-  width: 40px;
+  width: 80px;
   margin: 0 auto;
-  display: flex;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -91,6 +107,7 @@
   left: 50%;
   transform: translateX(-54px);
   cursor: pointer;
+  z-index: 1000;
 }
 
 .next_arrow{
@@ -103,4 +120,36 @@
   left: 50%;
   transform: translateX(30px);
   cursor: pointer;
+  z-index: 1000;
+}
+
+.card{
+  position: absolute;
+  top: 610px;
+  width: calc(100% - 88px) !important;
+}
+
+.copy_right{
+  position: absolute;
+  top: 720px;
+  background: url(../images/test/copyright.svg) no-repeat;
+  width: 178px;
+  height: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.analysis_text{
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 34px;
+  text-align: center;
+  letter-spacing: 0.15px;
+  color: #181818;
+  position: absolute;
+  top:330px;
+  left: 50%;
+  transform: translateX(-50%);
 }
