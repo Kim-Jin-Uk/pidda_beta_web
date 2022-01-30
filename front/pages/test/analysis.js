@@ -44,9 +44,19 @@ const Global = createGlobalStyle`
 const Analysis = () =>{
     const router = useRouter()
     const {dry, sens, pigment} = router.query
-    const dryOily = JSON.parse(dry)
-    const sensResist = JSON.parse(sens)
-    const pigmentObj = JSON.parse(pigment)
+    let dryOily = null
+    let sensResist = null
+    let pigmentObj = null
+    if (typeof dry !== "undefined"){
+        dryOily = JSON.parse(dry)
+    }
+    if (typeof sens !== "undefined"){
+        sensResist = JSON.parse(sens)
+    }
+    if (typeof pigment !== "undefined"){
+        pigmentObj = JSON.parse(pigment)
+    }
+
     const [percent, setPercent] = useState(0)
     const [viewType, setViewType]= useState(false)
 

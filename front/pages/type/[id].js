@@ -211,13 +211,23 @@ const Id = () => {
             <div className={styles.type_title}>내 피부 타입은...</div>
 
             <div className={styles.img_wrapper}>
-                <Image src={fruitList[id].image}></Image>
+                <Image src={
+                    id
+                        ? fruitList[id].image
+                        : ""
+                }></Image>
             </div>
 
-            <div className={styles.item_title}>{fruitList[id].title}</div>
+            <div className={styles.item_title}>{
+                id
+                    ? fruitList[id].title
+                    : ""
+            }</div>
 
             <div className={styles.item_hash}>{
-                "#"+tagList.dry_oil[fruitList[id].hash[0]]+" #"+tagList.sens_regist[fruitList[id].hash[1]]+" #"+tagList.pigment[fruitList[id].hash[2]]
+                id
+                    ? "#"+tagList.dry_oil[fruitList[id].hash[0]]+" #"+tagList.sens_regist[fruitList[id].hash[1]]+" #"+tagList.pigment[fruitList[id].hash[2]]
+                    : ""
             }</div>
 
             <div className={topStyles.rail_wrapper}>
@@ -259,22 +269,48 @@ const Id = () => {
 
             <div style={{marginBottom:"16px"}} className={topStyles.type_title}>내 피부의 특징과 관리팁</div>
             <div style={{marginBottom:"34px"}} className={topStyles.tag_text}>{
-                "#"+tagList.dry_oil[fruitList[id].hash[0]]+" #"+tagList.sens_regist[fruitList[id].hash[1]]+" #"+tagList.pigment[fruitList[id].hash[2]]
+                id
+                    ? "#"+tagList.dry_oil[fruitList[id].hash[0]]+" #"+tagList.sens_regist[fruitList[id].hash[1]]+" #"+tagList.pigment[fruitList[id].hash[2]]
+                    : ""
             }</div>
 
             <div className={topStyles.card_block}>
-                <pre style={{fontWeight:"700"}}>{dryTitle[fruitList[id].hash[0]]}</pre>
-                <pre>{dryBlock[fruitList[id].hash[0]]}</pre>
+                <pre style={{fontWeight:"700"}}>{
+                    id
+                        ? dryTitle[fruitList[id].hash[0]]
+                        : ""
+                }</pre>
+                <pre>{
+                    id
+                        ? dryBlock[fruitList[id].hash[0]]
+                        : ""
+                }</pre>
             </div>
 
             <div className={topStyles.card_block}>
-                <pre style={{fontWeight:"700"}}>{sensTitle[fruitList[id].hash[1]]}</pre>
-                <pre>{sensBlock[fruitList[id].hash[1]]}</pre>
+                <pre style={{fontWeight:"700"}}>{
+                    id
+                        ? sensTitle[fruitList[id].hash[1]]
+                        : ""
+                }</pre>
+                <pre>{
+                    id
+                        ? sensBlock[fruitList[id].hash[1]]
+                        : ""
+                }</pre>
             </div>
 
             <div className={topStyles.card_block}>
-                <pre style={{fontWeight:"700"}}>{pigmentTitle[fruitList[id].hash[2]]}</pre>
-                <pre>{pigmentBlock[fruitList[id].hash[2]]}</pre>
+                <pre style={{fontWeight:"700"}}>{
+                    id
+                        ? pigmentTitle[fruitList[id].hash[2]]
+                        : ""
+                }</pre>
+                <pre>{
+                    id
+                        ? pigmentBlock[fruitList[id].hash[2]]
+                        : ""
+                }</pre>
             </div>
 
             <div className={topStyles.share_title}>피부 타입 공유하기</div>
