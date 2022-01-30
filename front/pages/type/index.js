@@ -141,6 +141,8 @@ const Type = () => {
                     <FruitItem v={v} i ={i}></FruitItem>
                 ))}
             </div>
+
+            <div className={topStyles.copy_right_main}></div>
         </>
     )
 }
