@@ -33,8 +33,6 @@ const Upload = () => {
 
             <div className={styles.group_img}></div>
 
-            <div className={styles.bottom_text}>개인정보이용정책</div>
-
             <div className={topStyles.copy_right_main}></div>
         </>
     )

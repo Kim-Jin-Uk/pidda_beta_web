@@ -10,6 +10,11 @@ import {createGlobalStyle} from "styled-components";
 import Link from "next/link"
 
 const Global = createGlobalStyle`
+  
+  body{
+    overflow: hidden;
+  }
+  
   .ant-radio-group{
     text-align: left;
     >label{
