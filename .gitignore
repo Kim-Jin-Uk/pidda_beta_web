@@ -1,3 +1,6 @@
 /front/node_modules/
 /front/.next/
 /pida.pem
+/back/node_modules/
+/back/.next/
+/back/.env

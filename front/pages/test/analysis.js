@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Router, {useRouter} from "next/router";
-import {Progress, Slider} from "antd";
+import {message, Progress, Slider} from "antd";
 import {createGlobalStyle} from "styled-components";
 import styles from "../../styles/test.module.scss";
 import fruit_1 from "../../images/type/fruit_1.svg";
@@ -17,6 +17,10 @@ import fruit_11 from "../../images/type/fruit_11.svg";
 import fruit_12 from "../../images/type/fruit_12.svg";
 import Image from "next/image";
 import cardStyles from "../../styles/onboad.module.scss";
+import useScript from "../../hooks/use-script";
+import KakaoShareButton from "../../components/KakaoShareButton";
+import {useDispatch} from "react-redux";
+import {SURVEY_REQUEST} from "../../reducers/user";
 
 const Global = createGlobalStyle`
     .anticon{
@@ -43,6 +47,7 @@ const Global = createGlobalStyle`
 
 const Analysis = () =>{
     const router = useRouter()
+    const dispatch = useDispatch()
     const {dry, sens, pigment} = router.query
     let dryOily = null
     let sensResist = null
@@ -72,6 +77,18 @@ const Analysis = () =>{
     const [sensResistPercent,setSensResistPercent] = useState(0)
     const [pigmentPercent,setPigmentPercent] = useState(0)
 
+    useScript('https://developers.kakao.com/sdk/js/kakao.js')
+
+    const handleCopyClipBoard = async () => {
+        try {
+            const currentUrl = window.location.href
+            await navigator.clipboard.writeText(currentUrl);
+            message.success('링크가 복사되었습니다');
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
     let typeList = [0,0,0]
     const [fruitItem,setFruitItem] = useState({
         title:"예민한 밤",
@@ -86,9 +103,11 @@ const Analysis = () =>{
 
     useEffect(() => {
         if (percent >= 100){
+            let answer = []
             let d_score = 0
             for (let i = 1; i < 8; i++) {
                 const d = dryOily[`${i}`]
+                answer.push(d)
                 d_score += d
             }
             if (d_score < 14){
@@ -108,6 +127,7 @@ const Analysis = () =>{
             let s_score = 0
             for (let i = 1; i < 10; i++) {
                 const s = sensResist[`${i}`]
+                answer.push(s)
                 s_score += s
             }
             if (s_score < 15.5){
@@ -124,6 +144,7 @@ const Analysis = () =>{
             let p_score = 0
             for (let i = 1; i < 8; i++) {
                 const p = pigmentObj[`${i}`]
+                answer.push(p)
                 p_score += p
             }
             if (p_score < 15){
@@ -135,6 +156,12 @@ const Analysis = () =>{
                 setPigmentPercent(50 + (50 * (p_score - 15) / 13))
                 setPigmentScore(0)
             }
+
+            console.log(answer.join(", "))
+            dispatch({
+                type:SURVEY_REQUEST,
+                data:{answer:answer.join(", ")}
+            })
 
             typeList = [dryScore,sensScore,pigmentScore]
             setViewType(true)
@@ -389,8 +416,8 @@ const Analysis = () =>{
                             <div className={styles.share_title}>결과 공유하기</div>
 
                             <div className={styles.share_btn_wrapper}>
-                                <div className={styles.share_btn_kakao}></div>
-                                <div className={styles.share_btn_link}></div>
+                                <KakaoShareButton url={fruitItem} hash={`${dryOilText} ${sensResistText} ${pigmentText}`}></KakaoShareButton>
+                                <div onClick={() => handleCopyClipBoard()} className={styles.share_btn_link}></div>
                             </div>
 
                             <div onClick={onBackMain} style={{marginBottom:"30px"}} className={`${cardStyles.card} ${cardStyles.first_card}`}><div>한 번 더 테스트하기</div></div>
