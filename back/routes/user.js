@@ -3,7 +3,7 @@ const path = require("path");
 const multer = require('multer')
 const multerS3 = require('multer-s3')
 const AWS = require('aws-sdk')
-const {Survey} = require('../models')
+const {Survey,Image} = require('../models')
 
 const router = express.Router()
 
@@ -15,9 +15,9 @@ AWS.config.update({
 const upload = multer({
     storage: multerS3({
         s3: new AWS.S3(),
-        bucket: 'brmnmusic-image-s3',
+        bucket: 'pida-aws',
         key(req, file, cb){
-            cb(null,`profile/${Date.now()}_${path.basename(file.originalname)}`)
+            cb(null,`diary/${Date.now()}_${path.basename(file.originalname)}`)
         }
     }),
     limits:{fileSize:20*1024*1024},

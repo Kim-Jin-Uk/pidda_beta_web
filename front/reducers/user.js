@@ -28,8 +28,16 @@ export const IMAGE_UPLOAD_REQUEST = "IMAGE_UPLOAD_REQUEST"
 export const IMAGE_UPLOAD_SUCCESS = "IMAGE_UPLOAD_SUCCESS"
 export const IMAGE_UPLOAD_FAILURE = "IMAGE_UPLOAD_FAILURE"
 
+export const IMAGE_DONE = "IMAGE_DONE"
+
 export default (state = initialState, action) => produce(state, (draft) => {
     switch (action.type) {
+        case IMAGE_DONE:
+            draft.imageLoading = false;
+            draft.imageError = null;
+            draft.imageDone = false;
+            draft.imageUrl = null;
+            break;
 
         case SURVEY_REQUEST:
             draft.surveyLoading = true;

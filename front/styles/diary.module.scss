@@ -29,9 +29,15 @@
   width: 328px;
   height: 173px;
   border-radius: 10px;
-  background: url(../images/diary/upload.svg);
   margin: 38px auto 37px;
   cursor: pointer;
+}
+
+.inner_img{
+  width: 328px;
+  height: 173px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 .group_img{

@@ -5,6 +5,7 @@ import typeStyles from "../../styles/type.module.scss";
 import textStyles from "../../styles/onboad.module.scss";
 import styles from "../../styles/diary.module.scss";
 import {message} from "antd";
+import Link from 'next/link'
 
 const Diary = () => {
     const [id, setId] = useState("")
@@ -17,10 +18,7 @@ const Diary = () => {
     }
 
     const onClickNext = () => {
-        if (id.length < 4){
-            return message.warning("정확한 ID 또는 핸드폰 번호를 입력해주세요.")
-        }
-        Router.push("/diary/upload")
+        message.warning("정확한 ID 또는 핸드폰 번호를 입력해주세요.")
     }
 
     return(
@@ -45,7 +43,22 @@ const Diary = () => {
             <div className={styles.main_img}></div>
 
             <input className={styles.input} type="text" value={id} onChange={(e) => onChangeId(e.target.value)} placeholder={"카카오톡 ID 또는 핸드폰 번호를 입력해주세요"}/>
-            <div onClick={() => onClickNext()} style={{margin:"20px 25px 42px"}} className={`${textStyles.card} ${textStyles.first_card}`}><div>다이어리 작성하기</div></div>
+
+            {
+                id.length < 4
+                    ?
+                    <div onClick={() => onClickNext()} style={{margin:"20px 25px 42px"}} className={`${textStyles.card} ${textStyles.first_card}`}><div>다이어리 작성하기</div></div>
+                    :
+                    <Link href={{
+                        pathname: `/diary/upload`, // 라우팅 id
+                        query: {
+                            id: JSON.stringify(id),
+                        }, // props
+                    }}
+                    ><a><div style={{margin:"20px 25px 42px"}} className={`${textStyles.card} ${textStyles.first_card}`}><div>다이어리 작성하기</div></div>
+                    </a></Link>
+            }
+
 
             <div className={topStyles.copy_right_main}></div>
         </>
