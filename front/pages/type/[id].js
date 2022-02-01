@@ -17,6 +17,9 @@ import {createGlobalStyle} from "styled-components";
 import Image from "next/image";
 import topStyles from "../../styles/test.module.scss";
 import cardStyles from "../../styles/onboad.module.scss";
+import KakaoShareButton from "../../components/KakaoShareButton";
+import useScript from "../../hooks/use-script";
+import {message} from "antd";
 
 const Global = createGlobalStyle`
   span{
@@ -198,6 +201,18 @@ const Id = () => {
         Router.replace("/test")
     }
 
+    useScript('https://developers.kakao.com/sdk/js/kakao.js')
+
+    const handleCopyClipBoard = async () => {
+        try {
+            const currentUrl = window.location.href
+            await navigator.clipboard.writeText(currentUrl);
+            message.success('링크가 복사되었습니다');
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
     return(
         <>
             <Global />
@@ -315,11 +330,10 @@ const Id = () => {
 
             <div className={topStyles.share_title}>피부 타입 공유하기</div>
 
-            <div className={topStyles.share_btn_wrapper}>
-                <div className={topStyles.share_btn_kakao}></div>
-                <div className={topStyles.share_btn_link}></div>
+            <div className={styles.share_btn_wrapper}>
+                <KakaoShareButton url={""} hash={"#"+tagList.dry_oil[fruitList[id].hash[0]]+" #"+tagList.sens_regist[fruitList[id].hash[1]]+" #"+tagList.pigment[fruitList[id].hash[2]]}></KakaoShareButton>
+                <div onClick={() => handleCopyClipBoard()} className={styles.share_btn_link}></div>
             </div>
-
             <div onClick={onClickTest} style={{marginBottom:"30px"}} className={`${cardStyles.card} ${cardStyles.first_card}`}><div>테스트 해보기</div></div>
 
             <div className={topStyles.copy_right_main}></div>

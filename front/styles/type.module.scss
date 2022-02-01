@@ -11,6 +11,24 @@
   }
 }
 
+.share_btn_link{
+  float: right;
+  background: url(../images/test/link_share.svg);
+  cursor: pointer;
+}
+
+.share_btn_wrapper{
+  width: 120px;
+  height: 39px;
+  margin: 0 auto 30px;
+  > div{
+    width: 38px;
+    height: 38px;
+    border-radius: 19px;
+    display: inline-block;
+  }
+}
+
 .fruit_list_wrapper{
   margin: 12px auto 72px;
   width: calc(100% - 34px);
