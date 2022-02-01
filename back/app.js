@@ -41,6 +41,10 @@ if (process.env.NODE_ENV === 'production'){
     app.use(morgan('dev'))
 }
 
+app.get('/',(req,res,next) => {
+    res.send("hello!!!")
+})
+
 app.use('/user',userRouter)
 
 app.listen(3065,() => {
