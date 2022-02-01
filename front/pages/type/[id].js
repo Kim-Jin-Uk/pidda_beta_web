@@ -192,9 +192,11 @@ const Id = () => {
     }
 
     useEffect(() => {
-        setDryOilPercent((100 / 6) + (2 - fruitList[id].hash[0]) * (100 / 3))
-        setSensResistPercent((100 / 4) + (1 - fruitList[id].hash[1]) * (100 / 2))
-        setPigmentPercent((100 / 4) + (1 - fruitList[id].hash[2]) * (100 / 2))
+        if (id){
+            setDryOilPercent((100 / 6) + (2 - fruitList[id].hash[0]) * (100 / 3))
+            setSensResistPercent((100 / 4) + (1 - fruitList[id].hash[1]) * (100 / 2))
+            setPigmentPercent((100 / 4) + (1 - fruitList[id].hash[2]) * (100 / 2))
+        }
     },[id])
 
     const onClickTest = () => {
@@ -229,8 +231,8 @@ const Id = () => {
                 <Image src={
                     id
                         ? fruitList[id].image
-                        : ""
-                }></Image>
+                        : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC"
+                } width="100%" height="100%"></Image>
             </div>
 
             <div className={styles.item_title}>{
