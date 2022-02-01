@@ -331,7 +331,11 @@ const Id = () => {
             <div className={topStyles.share_title}>피부 타입 공유하기</div>
 
             <div className={styles.share_btn_wrapper}>
-                <KakaoShareButton url={""} hash={"#"+tagList.dry_oil[fruitList[id].hash[0]]+" #"+tagList.sens_regist[fruitList[id].hash[1]]+" #"+tagList.pigment[fruitList[id].hash[2]]}></KakaoShareButton>
+                <KakaoShareButton url={""} hash={
+                    id
+                        ? "#"+tagList.dry_oil[fruitList[id].hash[0]]+" #"+tagList.sens_regist[fruitList[id].hash[1]]+" #"+tagList.pigment[fruitList[id].hash[2]]
+                        : ""
+                }></KakaoShareButton>
                 <div onClick={() => handleCopyClipBoard()} className={styles.share_btn_link}></div>
             </div>
             <div onClick={onClickTest} style={{marginBottom:"30px"}} className={`${cardStyles.card} ${cardStyles.first_card}`}><div>테스트 해보기</div></div>
