@@ -28,6 +28,35 @@ const Global = createGlobalStyle`
   }
 `
 
+function ClipboardCopy() {
+    const doCopy = text => {
+// 흐름 1.
+        if (!document.queryCommandSupported("copy")) {
+            return message.warning("복사하기가 지원되지 않는 브라우저입니다.");
+        }
+// 흐름 2.
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.style.top = 0;
+        textarea.style.left = 0;
+        textarea.style.position = "fixed";
+// 흐름 3.
+        document.body.appendChild(textarea);
+// focus() -> 사파리 브라우저 서포팅
+        textarea.focus();
+// select() -> 사용자가 입력한 내용을 영역을 설정할 때 필요
+        textarea.select();
+// 흐름 4.
+        document.execCommand("copy");
+// 흐름 5.
+        document.body.removeChild(textarea);
+        message.success("클립보드에 복사되었습니다.");
+    };
+    return (
+        <div className={styles.share_btn_link} onClick={() => doCopy(window.location.href)}></div>
+    );
+}
+
 const Id = () => {
     const router = useRouter();
     const { id } = router.query;
@@ -39,6 +68,8 @@ const Id = () => {
     const [dryOilPercent,setDryOilPercent] = useState(0)
     const [sensResistPercent,setSensResistPercent] = useState(0)
     const [pigmentPercent,setPigmentPercent] = useState(0)
+
+    useScript('https://developers.kakao.com/sdk/js/kakao.js')
 
     const fruitList = [
         {
@@ -203,8 +234,6 @@ const Id = () => {
         Router.replace("/test")
     }
 
-    useScript('https://developers.kakao.com/sdk/js/kakao.js')
-
     const handleCopyClipBoard = async () => {
         try {
             const currentUrl = window.location.href
@@ -338,7 +367,7 @@ const Id = () => {
                         ? "#"+tagList.dry_oil[fruitList[id].hash[0]]+" #"+tagList.sens_regist[fruitList[id].hash[1]]+" #"+tagList.pigment[fruitList[id].hash[2]]
                         : ""
                 }></KakaoShareButton>
-                <div onClick={() => handleCopyClipBoard()} className={styles.share_btn_link}></div>
+                <ClipboardCopy></ClipboardCopy>
             </div>
             <div onClick={onClickTest} style={{marginBottom:"30px"}} className={`${cardStyles.card} ${cardStyles.first_card}`}><div>테스트 해보기</div></div>
 

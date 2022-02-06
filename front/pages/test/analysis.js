@@ -45,6 +45,35 @@ const Global = createGlobalStyle`
     }
 `
 
+function ClipboardCopy() {
+    const doCopy = text => {
+// 흐름 1.
+        if (!document.queryCommandSupported("copy")) {
+            return message.warning("복사하기가 지원되지 않는 브라우저입니다.");
+        }
+// 흐름 2.
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.style.top = 0;
+        textarea.style.left = 0;
+        textarea.style.position = "fixed";
+// 흐름 3.
+        document.body.appendChild(textarea);
+// focus() -> 사파리 브라우저 서포팅
+        textarea.focus();
+// select() -> 사용자가 입력한 내용을 영역을 설정할 때 필요
+        textarea.select();
+// 흐름 4.
+        document.execCommand("copy");
+// 흐름 5.
+        document.body.removeChild(textarea);
+        message.success("클립보드에 복사되었습니다.");
+    };
+    return (
+        <div className={styles.share_btn_link} onClick={() => doCopy(window.location.href)}></div>
+    );
+}
+
 const Analysis = () =>{
     const router = useRouter()
     const dispatch = useDispatch()
@@ -79,17 +108,7 @@ const Analysis = () =>{
 
     useScript('https://developers.kakao.com/sdk/js/kakao.js')
 
-    const handleCopyClipBoard = async () => {
-        try {
-            const currentUrl = window.location.href
-            await navigator.clipboard.writeText(currentUrl);
-            message.success('링크가 복사되었습니다');
-        } catch (error) {
-            console.log(error)
-        }
-    };
-
-    let typeList = [0,0,0]
+    const [typeList, setTypeList] = useState([0,0,0])
     const [fruitItem,setFruitItem] = useState({
         title:"예민한 밤",
         hash:[2,0,0],
@@ -156,14 +175,10 @@ const Analysis = () =>{
                 setPigmentPercent(50 + (50 * (p_score - 15) / 13))
                 setPigmentScore(0)
             }
-
-            console.log(answer.join(", "))
             dispatch({
                 type:SURVEY_REQUEST,
                 data:{answer:answer.join(", ")}
             })
-
-            typeList = [dryScore,sensScore,pigmentScore]
             setViewType(true)
         }else {
             setTimeout(function (){
@@ -174,6 +189,24 @@ const Analysis = () =>{
 
     const onBackMain = () => {
         Router.back()
+    }
+
+    useEffect(() => {
+        setTypeList([dryScore,sensScore,pigmentScore])
+    },[dryScore,sensScore,pigmentScore])
+
+    useEffect(() => {
+        for (let i = 0; i < fruitList.length; i++) {
+            const item = fruitList[i]
+            if (item.hash[0] === typeList[0] && item.hash[1] === typeList[1] && item.hash[2] === typeList[2]){
+                setFruitItem(item)
+                break
+            }
+        }
+    },[typeList])
+
+    const onClickTest = () => {
+        Router.replace("/test")
     }
 
     const fruitList = [
@@ -323,18 +356,6 @@ const Analysis = () =>{
         "c. 고른 피부색을 가진 당신!\n\n"
     ]
 
-    useEffect(() => {
-        for (let i = 0; i < fruitList.length; i++) {
-            const item = fruitList[i]
-            if (item.hash[0] === typeList[0] && item.hash[1] === typeList[1] && item.hash[2] === typeList[2]){
-                setFruitItem(item)
-                break
-            }
-        }
-    },[])
-
-
-
     return(
         <>
             <Global />
@@ -417,10 +438,10 @@ const Analysis = () =>{
 
                             <div className={styles.share_btn_wrapper}>
                                 <KakaoShareButton url={fruitItem} hash={`${dryOilText} ${sensResistText} ${pigmentText}`}></KakaoShareButton>
-                                <div onClick={() => handleCopyClipBoard()} className={styles.share_btn_link}></div>
+                                <ClipboardCopy></ClipboardCopy>
                             </div>
 
-                            <div onClick={onBackMain} style={{marginBottom:"30px"}} className={`${cardStyles.card} ${cardStyles.first_card}`}><div>한 번 더 테스트하기</div></div>
+                            <div onClick={onClickTest} style={{marginBottom:"30px"}} className={`${cardStyles.card} ${cardStyles.first_card}`}><div>한 번 더 테스트하기</div></div>
 
                             <div className={styles.copy_right_main}></div>
                         </>
