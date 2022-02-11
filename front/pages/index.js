@@ -35,7 +35,7 @@ const Main =() => {
                          한 장으로 간단하게
                     </div>
                     <div className={styles.side_title}>누구나 쉽게 피부 확인 가능</div>
-                    <div className={styles.boad_img}></div>
+                    <div className={styles.boad_img_1}></div>
                 </div>
                 <div className={styles.boad_wrapper}>
                     <div className={styles.green_title}>AI와 문진으로 </div>
@@ -43,7 +43,7 @@ const Main =() => {
                          정확하게
                     </div>
                     <div className={styles.side_title}>누구나 쉽게 피부 확인 가능</div>
-                    <div className={styles.boad_img}></div>
+                    <div className={styles.boad_img_2}></div>
                 </div>
                 <div className={styles.boad_wrapper}>
                     <div className={styles.green_title}>매일아침 </div>
@@ -51,7 +51,7 @@ const Main =() => {
                         꾸준하게
                     </div>
                     <div className={styles.side_title}>누구나 쉽게 피부 확인 가능</div>
-                    <div className={styles.boad_img}></div>
+                    <div className={styles.boad_img_3}></div>
                 </div>
             </Slider>
             <div className={`${styles.card} ${styles.first_card}`} onClick={onClickFirst}><div>피부타입 테스트 시작하기</div></div>

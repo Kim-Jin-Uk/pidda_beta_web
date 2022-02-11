@@ -5,7 +5,6 @@
 }
 
 .green_title{
-  font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 31px;
@@ -17,7 +16,6 @@
 }
 
 .black_title{
-  font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 31px;
@@ -30,7 +28,6 @@
 }
 
 .side_title{
-  font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 15px;
@@ -39,11 +36,25 @@
   margin-top: 26px;
 }
 
-.boad_img{
-  width: 169px;
-  height: 192px;
-  background: url(../images/onboad/onboading.svg);
-  margin: 26px auto 21px;
+.boad_img_1{
+  width: 300px;
+  height: 150px;
+  background: url(../images/onboad/onboad_1.svg) no-repeat center;
+  margin: 50px auto;
+}
+
+.boad_img_2{
+  width: 300px;
+  height: 150px;
+  background: url(../images/onboad/onboad_2.svg) no-repeat center;
+  margin: 50px auto;
+}
+
+.boad_img_3{
+  width: 300px;
+  height: 150px;
+  background: url(../images/onboad/onboad_3.svg) no-repeat center;
+  margin: 50px auto;
 }
 
 .card{
@@ -58,7 +69,6 @@
   padding: 14px;
   cursor: pointer;
   >div{
-    font-family: Noto Sans KR;
     font-style: normal;
     font-weight: bold;
     font-size: 15px;

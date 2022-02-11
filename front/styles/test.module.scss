@@ -17,7 +17,6 @@
 }
 
 .top_text{
-  font-family: Roboto;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -37,7 +36,6 @@
 }
 
 .test_title{
-  font-family: Noto Sans KR;
   font-style: normal;
   font-weight: bold;
   font-size: 15px;
@@ -51,7 +49,6 @@
 }
 
 .alert_text{
-  font-family: Noto Sans KR;
   font-style: normal;
   font-weight: bold;
   font-size: 15px;
@@ -64,7 +61,6 @@
 }
 
 .test_sub_title{
-  font-family: Noto Sans KR;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
@@ -147,7 +143,6 @@
 }
 
 .analysis_text{
-  font-family: Noto Sans KR;
   font-style: normal;
   font-weight: bold;
   font-size: 22px;
@@ -162,7 +157,6 @@
 }
 
 .tag_text{
-  font-family: Noto Sans KR;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -223,7 +217,6 @@
   text-align: center;
   position: relative;
   top: -18px;
-  font-family: Noto Sans KR;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
@@ -243,7 +236,6 @@
 }
 
 .type_title{
-  font-family: Noto Sans KR;
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -261,7 +253,6 @@
 }
 
 .item_title{
-  font-family: Noto Sans KR;
   font-style: normal;
   font-weight: bold;
   font-size: 30px;
@@ -274,19 +265,18 @@
 
 .card_block{
   padding:16px;
-  margin-left: 38px;
-  margin-right: 38px;
+  margin-left: 20px;
+  margin-right: 20px;
   border-radius: 10px;
   border: 2px solid #3AD29F;
   margin-bottom: 27px;
   > pre{
     margin: 0;
-    text-align: center;
-    font-family: Noto Sans KR;
+    text-align: left;
     font-style: normal;
     font-weight: 500;
     font-size: 15px;
-    line-height: 18px;
+    line-height: 180%;
     color: #181818;
     overflow: hidden;
     white-space: pre-wrap;
@@ -294,7 +284,6 @@
 }
 
 .share_title{
-  font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 15px;
@@ -327,4 +316,40 @@
   float: right;
   background: url(../images/test/link_share.svg);
   cursor: pointer;
+}
+
+.circle_first{
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: #897493;
+  border: 2px solid #555555;
+  border-radius: 8px;
+  vertical-align: top;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+.circle_second{
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: #CFA0B5;
+  border: 2px solid #555555;
+  border-radius: 8px;
+  vertical-align: top;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+.circle_third{
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: #DDA753;
+  border: 2px solid #555555;
+  border-radius: 8px;
+  vertical-align: top;
+  margin-top: 5px;
+  margin-right: 10px;
 }

@@ -1,2 +1,2 @@
-const backUrl = "http://52.78.100.225"
+const backUrl = "http://localhost:3065"
 export default backUrl
