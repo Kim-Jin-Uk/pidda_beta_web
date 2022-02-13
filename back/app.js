@@ -23,7 +23,7 @@ db.sequelize.sync()
 app.use(helmet())
 
 app.use(cors({
-    origin:[process.env.FRONT_URL,'http://13.125.139.187',],
+    origin:[process.env.FRONT_URL,'http://13.125.139.187',"http://dailyaiskin.kr/"],
     credentials: true,
 }))
 
