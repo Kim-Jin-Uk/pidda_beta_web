@@ -47,6 +47,6 @@ app.get('/',(req,res,next) => {
 
 app.use('/user',userRouter)
 
-app.listen(3065,() => {
+app.listen(80,() => {
     console.log("server open")
 })
