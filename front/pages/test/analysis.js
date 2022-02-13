@@ -19,9 +19,10 @@ import Image from "next/image";
 import cardStyles from "../../styles/onboad.module.scss";
 import useScript from "../../hooks/use-script";
 import KakaoShareButton from "../../components/KakaoShareButton";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {SURVEY_REQUEST} from "../../reducers/user";
 import topStyles from "../../styles/test.module.scss";
+import onboadStyles from "../../styles/onboad.module.scss"
 
 const Global = createGlobalStyle`
     .anticon{
@@ -99,6 +100,8 @@ const Analysis = () =>{
     const [percent, setPercent] = useState(0)
     const [viewType, setViewType]= useState(false)
 
+    const {index} = useSelector((state) => state.user);
+
     const [dryScore,setDryScore] = useState(0)
     const [sensScore,setSensScore] = useState(0)
     const [pigmentScore,setPigmentScore] = useState(0)
@@ -118,7 +121,8 @@ const Analysis = () =>{
         title:"예민한 밤",
         hash:[2,0,0],
         color:"#9E6C50",
-        image:fruit_1
+        image:fruit_1,
+        contents:"수분이 적고 민감한 피부를 가진 당신!"
     })
 
     // 7~13 건성/ 14~17 중성/ 18~28 지성
@@ -220,72 +224,84 @@ const Analysis = () =>{
             hash:[2,0,0],
             color:"#9E6C50",
             image:fruit_1,
+            contents:"수분이 적고 민감한 피부를 가진 당신!"
         },
         {
             title:"가을타는 블루베리",
             hash:[2,1,0],
             color:"#9B8DCF",
-            image:fruit_2
+            image:fruit_2,
+            contents:"수분이 적고 색소침착이 되기 쉬운 피부를 가진 당신!"
         },
         {
             title:"추위타는 감",
             hash:[2,0,1],
             color:"#FF885D",
-            image:fruit_3
+            image:fruit_3,
+            contents:"수분이 적고 민감한 피부를 가진 당신!"
         },
         {
             title:"깨끗한 사과",
             hash:[2,1,1],
             color:"#FF6262",
-            image:fruit_4
+            image:fruit_4,
+            contents:"수분이 적지만 매끈한 피부를 가진 당신!"
         },
         {
             title:"수줍어하는 복숭아",
             hash:[1,0,0],
             color:"#FFBAA2",
-            image:fruit_5
+            image:fruit_5,
+            contents:"민감하고 색소침착이 되기 쉬운 피부를 가진 당신!"
         },
         {
             title:"매끈한 바나나",
             hash:[1,1,0],
             color:"#FFBF00",
-            image:fruit_6
+            image:fruit_6,
+            contents:"색소 침착이 되기 쉽지만 전반적으로 피부가 좋은 당신!"
         },
         {
             title:"센치한 자몽",
             hash:[1,0,1],
             color:"#FF885D",
-            image:fruit_7
+            image:fruit_7,
+            contents:"민감하지만 유수분 밸런스가 잘 맞는 피부를 가진 당신!"
         },
         {
             title:"쫀쫀한 애플망고",
             hash:[1,1,1],
             color:"#FFBB31",
-            image:fruit_8
+            image:fruit_8,
+            contents:"완벽한 밸런스의 피부를 가진 당신!"
         },
         {
             title:"사춘기 홍시",
             hash:[0,0,0],
             color:"#FF8917",
-            image:fruit_9
+            image:fruit_9,
+            contents:"유분이 많고 민감한 피부를 가진 당신!"
         },
         {
             title:"부유한 올리브",
             hash:[0,1,0],
             color:"#A2BE50",
-            image:fruit_10
+            image:fruit_10,
+            contents:"유분이 많지만 튼튼한 피부를 가진 당신!"
         },
         {
             title:"연약한 귤",
             hash:[0,0,1],
             color:"#FFA61A",
-            image:fruit_11
+            image:fruit_11,
+            contents:"민감하지만 균일한 톤의 피부를 가진 당신!"
         },
         {
             title:"튼튼한 코코넛",
             hash:[0,1,1],
             color:"#563520",
-            image:fruit_12
+            image:fruit_12,
+            contents:"유분이 많지만 피부장벽이 완벽한 당신!"
         },
     ]
 
@@ -358,6 +374,12 @@ const Analysis = () =>{
                                 <div className={styles.close_btn} onClick={onBackMain}></div>
                             </div>
 
+                            <div style={{color:"#1d1d1d"}} className={styles.type_title}>{
+                                index
+                                    ? `# ${index.id}`
+                                    : ""
+                            }</div>
+
                             <div className={styles.type_title}>내 피부 타입은...</div>
 
                             <div className={styles.img_wrapper}>
@@ -404,6 +426,10 @@ const Analysis = () =>{
                                     </div>
                                 </div>
                             </div>
+
+                            <div className={styles.fruit_detail_text}>{fruitItem.contents}</div>
+
+                            <div style={{margin:"0 10px"}} className={`${onboadStyles.card} ${onboadStyles.third_card}`} onClick={() => Router.push("https://forms.gle/3VvzRStia8PPZ15N9")}><div>나에게 맞는 맞춤형 화장품 구매하러가기</div></div>
 
                             <div style={{marginBottom:"16px"}} className={styles.type_title}>내 피부의 특징과 관리팁</div>
                             <div style={{marginBottom:"34px"}} className={styles.tag_text}>{`${dryOilText} ${sensResistText} ${pigmentText}`}</div>

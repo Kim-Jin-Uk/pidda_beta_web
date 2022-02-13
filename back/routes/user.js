@@ -26,11 +26,11 @@ const upload = multer({
 router.post('/survey', async (req,res,next)=>{
     try{
         console.log("survey",req.body)
-        await Survey.create({
+        const item = await Survey.create({
             answer:req.body.answer
         })
 
-        res.status(200).send("ok")
+        res.status(200).json({id:item.id})
     }catch (err){
         console.error(err)
         next(err)

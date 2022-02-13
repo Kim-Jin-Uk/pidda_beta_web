@@ -14,6 +14,8 @@ export const initialState = {
     imageUploadError:null,
 
     imageUrl:null,
+
+    index:null,
 };
 
 export const SURVEY_REQUEST = "SURVEY_REQUEST"
@@ -47,6 +49,7 @@ export default (state = initialState, action) => produce(state, (draft) => {
         case SURVEY_SUCCESS:
             draft.surveyLoading = false;
             draft.surveyDone = true;
+            draft.index = action.data;
             break;
         case SURVEY_FAILURE:
             draft.surveyLoading = false;
