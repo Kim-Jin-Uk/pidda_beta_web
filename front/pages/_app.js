@@ -10,7 +10,7 @@ const NodeBird = function ({ Component }) {
         <>
             <Head>
                 <meta charSet={"utf-8"}/>
-                <title>pidda</title>
+                <title>pida</title>
             </Head>
             <Component />
         </>
